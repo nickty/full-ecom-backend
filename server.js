@@ -2,7 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
-const authRouter = require('./routes/auth')
+// const authRouter = require('./routes/auth')
+const { readdirSync } = require('fs')
 require('dotenv').config()
 
 const app = express()
@@ -22,7 +23,8 @@ app.use(express.json())
 app.use(cors())
 
 //route 
-app.use('/api', authRouter)
+// app.use('/api', authRouter)
+readdirSync('./routes').map(r => app.use('/api', require('./routes/' + r))); 
 
 
 //port 
