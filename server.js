@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const cors = require('cors')
+const authRouter = require('./routes/auth')
 require('dotenv').config()
 
 const app = express()
@@ -21,9 +22,7 @@ app.use(express.json())
 app.use(cors())
 
 //route 
-app.get('/api', (req, res) => {
-    res.send('Hello')
-})
+app.use('/api', authRouter)
 
 
 //port 
