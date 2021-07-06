@@ -9,6 +9,8 @@ cloudinary.config({
 
 exports.upload = async (req, res) => {
 
+    console.log('working fom')
+
     let result = await cloudinary.uploader.upload(req.body.image, {
         public_id: `${Date.now()}`,
         resource_type: 'auto'

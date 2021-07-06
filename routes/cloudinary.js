@@ -4,7 +4,7 @@ const { authCheck, adminCheck } = require('../middlewares/auth')
 const router = express.Router()
 
 router.post('/uploadimages', authCheck, adminCheck, upload)
-router.post('/removeimage', authCheck, adminCheck, remove)
+router.delete('/removeimage', authCheck, adminCheck, remove)
 
 
 module.exports = router
