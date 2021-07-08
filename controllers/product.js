@@ -52,7 +52,7 @@ exports.read = async (req, res) => {
 
         const product = await Product.findOne({slug: req.params.slug})
         .populate("category")
-        .populate("slug")
+        .populate("subs")
         .exec()
 
         res.json(product)
