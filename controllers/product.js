@@ -46,3 +46,19 @@ exports.remove = async (req, res) => {
        
     }
 }
+
+exports.read = async (req, res) => {
+    try {
+
+        const product = await Product.findOne({slug: req.params.slug})
+        .populate("category")
+        .populate("slug")
+        .exec()
+
+        res.json(product)
+        
+    } catch (error) {
+        console.log(error)
+        res.status(400).send('Failed to product from categry')
+    }
+}
