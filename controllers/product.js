@@ -62,3 +62,20 @@ exports.read = async (req, res) => {
         res.status(400).send('Failed to product from categry')
     }
 }
+
+exports.update =  async (req, res) => {
+    try {
+
+        // if(req.body.title){
+        //     req.body.slug = slugify(req.body.title)
+        // }
+
+        const updated = await Product.findOneAndUpdate({slug: req.params.slug}, req.body, {new: true}).exec()
+
+        res.json(updated)
+        
+    } catch (error) {
+        console.log(error)
+        res.status(400).send('Proudct update failed')
+    }
+}
