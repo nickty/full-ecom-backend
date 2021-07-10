@@ -80,7 +80,7 @@ exports.update =  async (req, res) => {
     }
 }
 
-exports.list = async () => {
+exports.list = async (req, res) => {
     try {
 
         const {sort, order, limit} = req.body
