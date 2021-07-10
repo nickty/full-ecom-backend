@@ -98,3 +98,10 @@ exports.list = async (req, res) => {
         res.status(400).send('Proudct query failed')
     }
 }
+
+exports.productsCount = async (req, res) => {
+    console.log('from me')
+    let total = await Product.find({}).estimatedDocumentCount().exec();
+
+    res.json(total)
+}
