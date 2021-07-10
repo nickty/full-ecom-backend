@@ -1,5 +1,5 @@
 const express = require('express')
-const { create, listAll, remove, read, update } = require('../controllers/product')
+const { create, listAll, remove, read, update, list } = require('../controllers/product')
 const { authCheck, adminCheck } = require('../middlewares/auth')
 const router = express.Router()
 
@@ -8,6 +8,8 @@ router.get('/products/:count', listAll)
 router.delete('/product/:slug', authCheck, adminCheck, remove)
 router.put('/product/:slug', authCheck, adminCheck, update)
 router.get('/product/:slug', read)
+
+router.post('/products', list)
 
 
 module.exports = router
