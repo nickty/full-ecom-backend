@@ -6,10 +6,12 @@ const router = express.Router()
 router.post('/product', authCheck, adminCheck, create)
 router.get('/products/total', productsCount)
 
+router.get('/product/:slug', read)
 router.get('/products/:count', listAll)
 router.delete('/product/:slug', authCheck, adminCheck, remove)
+
 router.put('/product/:slug', authCheck, adminCheck, update)
-router.get('/product/:slug', read)
+
 
 router.post('/products', list)
 
