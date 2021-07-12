@@ -140,12 +140,14 @@ exports.productStar = async (req, res) => {
     // who is updating
     //check if currently logged in user have already added rating thos project
 
-    let existingRatingObject = product.ratings.find((el) => (el.postedBy == user._id))
+    let existingRatingObject = product.ratings.find(el => 
+        el.postedBy.toString() === user._id.toString()
+        )
 
     //if user haven't left rating yet, push it
     if(existingRatingObject === undefined){
         let ratingAdded = await Product.findByIdAndUpdate(product._id, {
-            $push : {ratings:{ star: star, postedBy: user._id}}
+            $push : { ratings: { star: star, postedBy: user._id} }
         }, {new: true}).exec()
 
         res.json(ratingAdded)
@@ -154,7 +156,7 @@ exports.productStar = async (req, res) => {
 
         ratingUpdated = await Product.updateOne(
             {
-                ratings: { $elementMatch: existingRatingObject}
+                ratings: { $elemMatch: existingRatingObject}
             }, {
                 $set: { "ratings.$.star": star }
             }, 
