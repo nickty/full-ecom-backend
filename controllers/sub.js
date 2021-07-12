@@ -1,4 +1,5 @@
 const Sub = require('../models/sub')
+const Product = require('../models/product')
 const slugify = require('slugify')
 
 
@@ -20,15 +21,21 @@ exports.create = async (req, res) => {
 
 exports.list = async (req, res) => {
 
-    res.json( await Sub.find({}).sort({createdAT: -1}).exec())
+    res.json( await Sub.find({}).sort({createdAt: -1}).exec())
 
 }
 
 exports.read = async (req, res) => {
 
     let sub = await Sub.findOne({slug: req.params.slug}).exec();
+    const products = await Product.find({subs: sub})
+    .populate('category')
+    .exec()
 
-    res.json(sub)
+    res.json({
+        sub,
+        products
+    })
 
 }
 
