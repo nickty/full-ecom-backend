@@ -170,7 +170,7 @@ exports.productStar = async (req, res) => {
 
 }
 
-exports.handleQuery = async (req, res, query) => {
+const handleQuery = async (req, res, query) => {
     const products = await Product.find({ $text: { $search : query}})
     .populate('category', '_id name')
     .populate('subs', '_id name')
@@ -180,11 +180,11 @@ exports.handleQuery = async (req, res, query) => {
     res.json(products)
 }
 
-exports.searchFilters = async (req, res) => {
+exports.searchFilters = (req, res) => {
     const { query } = req.body
 
     if(query){
         console.log('query', query)
-        await handleQuery(req, res, query)
+        handleQuery(req, res, query)
     }
 }
