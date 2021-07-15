@@ -201,7 +201,7 @@ const handlePrice = async (req, res, price ) => {
     }
 }
 
-exports.searchFilters = (req, res) => {
+exports.searchFilters = async (req, res) => {
     const { query, price } = req.body
 
     if(query){
@@ -211,6 +211,6 @@ exports.searchFilters = (req, res) => {
 
     if(price !== undefined){
         console.log('price ---> ', price)
-        handlePrice(req, res, price)
+       await handlePrice(req, res, price)
     }
 }
