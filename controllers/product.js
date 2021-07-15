@@ -314,20 +314,20 @@ exports.searchFilters = async (req, res) => {
     }
 
     if(sub){
-        console.log("stars ---> ", subs)
+        console.log("Subs ---> ", sub)
         await handleSub(req, res, sub)
     }
 
     if(shipping){
-        console.log("stars ---> ", shipping)
+        console.log("shiping ---> ", shipping)
         await handleShipping(req, res, shipping)
     }
     if(brand){
-        console.log("stars ---> ", brand)
+        console.log("brand ---> ", brand)
         await handleBrand(req, res, brand)
     }
     if(color){
-        console.log("stars ---> ", color)
+        console.log("color ---> ", color)
         await handleColor(req, res, color)
     }
 }
