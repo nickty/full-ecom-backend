@@ -253,7 +253,7 @@ const handleStar = (req, res, stars) => {
 }
 
 const handleSub = async(req, res, sub) => {
-    const products = Product.find({subs: sub})
+    const products = await Product.find({subs: sub})
     .populate('category', '_id name')
     .populate('subs', '_id name')
     .populate('postedBy', '_id name')
