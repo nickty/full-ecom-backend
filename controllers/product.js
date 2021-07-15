@@ -193,6 +193,8 @@ const handlePrice = async (req, res, price ) => {
         .populate('postedBy', '_id name')
         .exec()
 
+        res.json(products)
+
     } catch (error) {
         console.log(error)
         res.status(400).send('Price query failed')
