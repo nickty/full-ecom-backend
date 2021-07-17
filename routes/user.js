@@ -6,6 +6,6 @@ const router = express.Router()
 
 router.post('/user/cart', authCheck, userCart)
 router.get('/user/cart', authCheck, getCart)
-router.get('/user/cart', authCheck, emptyCart)
+router.delete('/user/cart', authCheck, emptyCart)
 
 module.exports = router
