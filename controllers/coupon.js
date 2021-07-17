@@ -29,7 +29,7 @@ exports.remove = async (req, res) => {
 exports.list = async (req, res) => {
     try {
 
-        res.json(await Coupon.find({}).short({createdAt: -1}).exec())
+        res.json(await Coupon.find({}).sort({createdAt: -1}))
         
     } catch (error) {
         console.log(error)
