@@ -4,6 +4,6 @@ const { authCheck } = require('../middlewares/auth')
 
 const router = express.Router()
 
-router.post('/cart', authCheck, userCart)
+router.post('/user/cart', authCheck, userCart)
 
 module.exports = router
