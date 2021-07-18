@@ -8,7 +8,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET)
 exports.createPaymentIntent = async (req, res) => {
     //later applie coupon 
 
-    const paymentIntent = await stripe.paymentIntent.create({
+    const paymentIntent = await stripe.paymentIntents.create({
         amount: 100,
         currency: 'usd'
     })
