@@ -110,7 +110,7 @@ exports.createOrder = async (req, res) => {
     const {paymentIntent} = req.body.stripeResponse
     const user = await User.findOne({email: req.user.email}).exec()
 
-    let { products } = await Cart.findOne({ordered: user._id}).exec()
+    let { products } = await Cart.findOne({orderedBy: user._id}).exec()
 
     let newOrder = await new Order({
         products,
