@@ -24,6 +24,7 @@ const orderSchema = new Schema({
         enum:[
             "Not processed", 
             "processing",
+            "cash on delivery",
             "dispatched",
             "cancelled",
             "completed"

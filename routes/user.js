@@ -1,5 +1,5 @@
 const express = require('express')
-const { userCart, getCart, emptyCart, saveAddress, applyCouponToUserCart, createOrder, orders, AddToWishlist, wishlist, removeFromWishlist } = require('../controllers/user')
+const { userCart, getCart, emptyCart, saveAddress, applyCouponToUserCart, createOrder, orders, AddToWishlist, wishlist, removeFromWishlist, createCashOrder } = require('../controllers/user')
 const { authCheck } = require('../middlewares/auth')
 
 const router = express.Router()
@@ -19,5 +19,8 @@ router.get('/user/orders', authCheck, orders)
 router.post('/user/wishlist', authCheck, AddToWishlist)
 router.get('/user/wishlist', authCheck, wishlist)
 router.put('/user/wishlist/:productId', authCheck, removeFromWishlist)
+
+// cashondeliver
+router.post('/user/cash-order', authCheck, createCashOrder)
 
 module.exports = router
